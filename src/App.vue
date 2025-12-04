@@ -3,37 +3,37 @@
 <!-- vbase-3 para autocompletar -->
 
 <template>
+  <div>
    <!-- AGregar el componente del header con el titulo y lo importamos  -->
-  <HeaderComponent></HeaderComponent>
+   <HeaderComponent></HeaderComponent>
 
-  <div class="father">
-    <h1>Slots</h1>
+   <div class="father">
 
-    <h2>Este es el componente padre</h2>
+     <h1>Computed | Propiedades computadas</h1>
 
-    <ChildComponent>
-      <!-- aquí irá todo lo que se pondrá en el slot con name top -->
-      <template v-slot:top> 
-        <!-- este contenido solo se mostrará si hay un slot en el componenente hijo  -->
-        <h3>Contenido para slot Top</h3>
-      </template>
+     <input type="text" v-model="userName">
+   
+     <h2>Hola {{ userName }}</h2>
 
-      <!-- aquí irá todo lo que se pondrá en el slot con name bottom -->
-      <template v-slot:bottom> 
-        <!-- este contenido solo se mostrará si hay un slot en el componenente hijo  -->
-        <h3>Slot para bottom</h3>
-      </template>
-    </ChildComponent>
-
+    <h3>Tu nombre tiene {{ nameLength }} letras</h3>
+   </div>
   </div>
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  import { computed, ref } from 'vue';
   import HeaderComponent from './components/HeaderComponent.vue';
   import ChildComponent from './components/ChildComponent.vue';
 
+  const userName = ref('Arely')
 
+  // variable que depende de userNAme pero no se actualiza cada que modificamos userNAme
+  //const nameLength = ref(userName.value.length);
+
+  // para hacer que la variable siempre dependa se username usamos una variable computada (se usa una función callback)
+  const nameLength = computed(() => {
+    return userName.value.length
+  });
 </script>
 <style scoped> 
  .father{
