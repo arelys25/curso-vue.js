@@ -8,21 +8,27 @@
     <HeaderComponent></HeaderComponent>
     <h1 class="title">Hola a todos</h1>
 
-    <!-- para agregar un evento a algo, se pone el @ y en las comillas haremos referencia a la función  -->
-    <h2 @click="addOne">{{ number }}</h2> <!-- Importar variable del script (no es reactiva)-->
+    <!-- hacer que el id se obtenga de una variable con v-bind -->
+    <h2 v-bind:id="myId">Soy Arely</h2> 
+
+    <!-- forma abreviada de hacer v-bind ':' -->
+    <h2 :id="myId2">Soy otra Arely</h2> 
+
+    <!-- otra forma de usar v-bind, para obtener el value de una variable  -->
+    <input type="text" :value="myValue">
+
   </div>
 </template>
 
 <script setup>
   import { ref } from 'vue';
   import HeaderComponent from './components/HeaderComponent.vue';
-  console.log('Hola')
-  let number = ref(0); // hacer que una variable sea reactiva con la funcion ref (se importa). Lo que está entre paréntesis es el valor inicial 
 
-  // funcion que servirá para aumentar el valor de la variable al darle click
-  const addOne = () => {
-    number.value ++
-  }
+  const myId = 'patata';
+  const myId2 = 'pepino';
+  const myValue = ref("Escribe algo chido")
+
+
 
 </script>
 <!-- scoped ayuda a que los estilos generados solo se apliquen al componente  -->
