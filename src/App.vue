@@ -6,12 +6,12 @@
   <div>
     <!-- AGregar el componente del header con el titulo y lo importamos  -->
     <HeaderComponent></HeaderComponent>
-    <h1>Props | Comunicacion Padre-hijo</h1>
+    <h1>Component events - Comunicación hijo-padre</h1>
 
-    <!-- se coloca la variable que se definió que se exportaría en el hijo y se le coloca el valor deseado -->
-    <ChildComponent :msg="text" :people="person"></ChildComponent>
-    <ChildComponent msg="Otro mensaje"></ChildComponent>
+    <h2>Hola {{ displayName }}</h2>
 
+    <!-- poner el evento creado y la función que se ejecutará cuando el evento pase -->
+    <ChildComponent @login="setName"></ChildComponent>
   </div>
 </template>
 
@@ -20,11 +20,11 @@
   import HeaderComponent from './components/HeaderComponent.vue';
   import ChildComponent from './components/ChildComponent.vue';
 
-  const text ='Info desde una variable en el padre'
+  const displayName = ref('');
 
-  const person = {
-    sex: 'Mujer',
-    age: 20
+  const setName =  (event) => {
+    // al ejecutarse la fucnion, displayName será igual a la información del evento 
+    displayName.value = event
   }
 </script>
 <style scoped> 

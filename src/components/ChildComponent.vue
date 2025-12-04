@@ -1,38 +1,36 @@
 <template>
-    <div>
+    <div class="child">
         <h2>Este es el componente hijo</h2>
 
-        <!-- información de la variable extraida desde el padre -->
-        <p>{{ msg }}</p>
+        <p>Nombre de usuario: {{ userName }}</p>
+
+        <button @click="login_inicio">Login</button>
 
     </div>
 
-    <div>
-        <label for="">Género:</label>
-        <!-- el ? se usa para decir: en dado caso que no se encuentren sus propiedades, no los utilices -->
-        {{ people?.sex }}
-
-        <br>
-
-        <label for="">Edad:</label>
-        {{ people?.age }}
-    </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 
-    // aquí se colocarán el nombre y el tipo de variables que serán extraidas desde el componente padre 
-  defineProps({
-    msg: String,
-    //people: Object
-    people: { // si queremos ser más específicos con lo que se va a recibir
-        sex: String,
-        age: Number
-    }
-  })
+    // constante donde se crearán los eventos
+    const emit = defineEmits(['login','nombre_de_otro_evento'])
+
+  const userName = ref('Arely');
+
+  // variable que emitirá un evento con cierta información
+  const login_inicio = () => {
+    // primer argumento: nombre del evento, segundo argumento: la información que queremos que viaje
+    emit('login', userName.value)
+  }
 
 </script>
 
 <style scoped>
+    .child{
+        border: 5px solid black;
+        text-align: center;
+        align-items: center;
+    }
 
 </style>
