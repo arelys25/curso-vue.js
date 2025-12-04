@@ -9,25 +9,31 @@
 
    <div class="father">
 
-     <h1>Watch | Vigilancia de cambios</h1>
+     <h1>WatchEffect | Vigilancia de cambios</h1>
    
-     <h2>Hola {{ userName.name }}</h2>
+     <h2>Hola {{ userName2.name }}</h2>
 
-     <button @click="setName">Cambiar de usuario</button>
+     <button @click="setName2">Cambiar de usuario</button>
 
    </div>
   </div>
 </template>
 
 <script setup>
-  import { computed, ref, watch } from 'vue';
+  import { computed, ref, watch, watchEffect } from 'vue';
   import HeaderComponent from './components/HeaderComponent.vue';
   import ChildComponent from './components/ChildComponent.vue';
 
   const userName = ref({name:'Arely'})
 
+  const userName2 = ref({name:'Dania'})
+
   const setName = () => {
     userName.value.name = 'Alexis'
+  };
+
+  const setName2 = () => {
+    userName2.value.name = 'Ashly'
   };
 
   // watch nos avisa o vigila una variable que nosotros querramos
@@ -43,6 +49,13 @@
     inmediate: true,
     deep:true // se usa para especificar que queremos tambien vigilar los comportamientos internos de un objeto
   });
+
+  // en el watch effect no se necesita poner como argumento la variable a vigilar, ya con el simple hecho de mencionarla en la funcion es suficiente
+  watchEffect(
+    () => {
+      console.log('User Name modified to: ',userName2.value.name);
+    }
+  );
 
 </script>
 <style scoped> 
