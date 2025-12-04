@@ -6,12 +6,12 @@
   <div>
     <!-- AGregar el componente del header con el titulo y lo importamos  -->
     <HeaderComponent></HeaderComponent>
-    <h1 class="title">Hola a todos</h1>
 
-    <h2>{{ myValue }}</h2> 
+    <!-- si la variable myCondition es verdadera, el texto tomará la clase highlight, si es falsa, tomará la clase red -->
+    <h1 :class="myCondition ? 'highlight' : 'red'">Hola a todos</h1>
 
-    <!-- v-model ayuda a que, cuando se modifique el input, también se modifique el valor de la variable (que sea dinámica) -->
-    <input type="text" v-model="myValue">
+    <!-- poner más condiciones para más clases  -->
+    <h2 :class="{highlight: myCondition, red: true}">Soy Arely</h2>
 
   </div>
 </template>
@@ -20,19 +20,19 @@
   import { ref } from 'vue';
   import HeaderComponent from './components/HeaderComponent.vue';
 
-  const myValue = ref("Escribe algo chido")
-
+  let myCondition = true;
 
 
 </script>
 <!-- scoped ayuda a que los estilos generados solo se apliquen al componente  -->
 <style scoped> 
-  .title {
-    background-color: blue;
-    color: wheat;
+
+  .highlight {
+    background-color: black;
+    color: yellow;
   }
 
-  input {
-    font-size: 2em;
+  .red {
+    color: red;
   }
 </style>
