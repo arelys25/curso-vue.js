@@ -12,16 +12,19 @@
     <h2>Este es el componente padre</h2>
 
     <ChildComponent>
-      <!-- este contenido solo se mostrará si hay un slot en el componenente hijo  -->
-      <h3>Contenido desde el componente padre como slot</h3>
+      <!-- aquí irá todo lo que se pondrá en el slot con name top -->
+      <template v-slot:top> 
+        <!-- este contenido solo se mostrará si hay un slot en el componenente hijo  -->
+        <h3>Contenido para slot Top</h3>
+      </template>
+
+      <!-- aquí irá todo lo que se pondrá en el slot con name bottom -->
+      <template v-slot:bottom> 
+        <!-- este contenido solo se mostrará si hay un slot en el componenente hijo  -->
+        <h3>Slot para bottom</h3>
+      </template>
     </ChildComponent>
 
-    <ChildComponent>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-      <p>Lorem, ipsum dolor.</p>
-    </ChildComponent>
-
-    <ChildComponent></ChildComponent>
   </div>
 </template>
 

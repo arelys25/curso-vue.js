@@ -1,11 +1,12 @@
 <template>
     <div class="child">
+        <!-- slot ayuda a pegar todo un bloque de codigo html desde el componente padre  -->
+        <slot name="top"></slot>
         <h2>Este es el componente hijo</h2>
 
-        <!-- slot ayuda a pegar todo un bloque de codigo html desde el componente padre  -->
-        <slot>
-            <h4>Contenido por defecto por si el componente padre no envia nada</h4>
-        </slot>
+        <!-- personalización de slots -->
+        <slot name="bottom"></slot>
+
     </div>
 
 </template>
