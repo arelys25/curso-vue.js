@@ -8,14 +8,10 @@
     <HeaderComponent></HeaderComponent>
     <h1 class="title">Hola a todos</h1>
 
-    <!-- hacer que el id se obtenga de una variable con v-bind -->
-    <h2 v-bind:id="myId">Soy Arely</h2> 
+    <h2>{{ myValue }}</h2> 
 
-    <!-- forma abreviada de hacer v-bind ':' -->
-    <h2 :id="myId2">Soy otra Arely</h2> 
-
-    <!-- otra forma de usar v-bind, para obtener el value de una variable  -->
-    <input type="text" :value="myValue">
+    <!-- v-model ayuda a que, cuando se modifique el input, también se modifique el valor de la variable (que sea dinámica) -->
+    <input type="text" v-model="myValue">
 
   </div>
 </template>
@@ -24,8 +20,6 @@
   import { ref } from 'vue';
   import HeaderComponent from './components/HeaderComponent.vue';
 
-  const myId = 'patata';
-  const myId2 = 'pepino';
   const myValue = ref("Escribe algo chido")
 
 
@@ -36,5 +30,9 @@
   .title {
     background-color: blue;
     color: wheat;
+  }
+
+  input {
+    font-size: 2em;
   }
 </style>
