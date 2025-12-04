@@ -6,12 +6,15 @@
   <div>
     <!-- AGregar el componente del header con el titulo y lo importamos  -->
     <HeaderComponent></HeaderComponent>
+    <h1>Directiva V-If</h1>
 
-    <!-- si la variable myCondition es verdadera, el texto tomará la clase highlight, si es falsa, tomará la clase red -->
-    <h1 :class="myCondition ? 'highlight' : 'red'">Hola a todos</h1>
+    <!-- V-If hará que solo se muestre si la funcion se cumple. Se puede usar con booleanos o con cadenas o numeros (si está vacía es false) -->
+    <h2 v-if="condition">La condición se cumple</h2>
 
-    <!-- poner más condiciones para más clases  -->
-    <h2 :class="{highlight: myCondition, red: true}">Soy Arely</h2>
+    <h2 v-else-if="condition2">Condición 2</h2>
+
+    <!-- se cumple si las de arriba no se cumplen  -->
+    <h2 v-else>NO se cumplen las condiciones</h2>
 
   </div>
 </template>
@@ -20,19 +23,12 @@
   import { ref } from 'vue';
   import HeaderComponent from './components/HeaderComponent.vue';
 
-  let myCondition = true;
+  const condition = false;
+  const condition2 = false;
 
 
 </script>
 <!-- scoped ayuda a que los estilos generados solo se apliquen al componente  -->
 <style scoped> 
 
-  .highlight {
-    background-color: black;
-    color: yellow;
-  }
-
-  .red {
-    color: red;
-  }
 </style>
