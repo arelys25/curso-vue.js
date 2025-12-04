@@ -3,15 +3,25 @@
 <!-- vbase-3 para autocompletar -->
 
 <template>
-  <div>
-    <!-- AGregar el componente del header con el titulo y lo importamos  -->
-    <HeaderComponent></HeaderComponent>
-    <h1>Component events - Comunicación hijo-padre</h1>
+   <!-- AGregar el componente del header con el titulo y lo importamos  -->
+  <HeaderComponent></HeaderComponent>
 
-    <h2>Hola {{ displayName }}</h2>
+  <div class="father">
+    <h1>Slots</h1>
 
-    <!-- poner el evento creado y la función que se ejecutará cuando el evento pase -->
-    <ChildComponent @login="setName"></ChildComponent>
+    <h2>Este es el componente padre</h2>
+
+    <ChildComponent>
+      <!-- este contenido solo se mostrará si hay un slot en el componenente hijo  -->
+      <h3>Contenido desde el componente padre como slot</h3>
+    </ChildComponent>
+
+    <ChildComponent>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+      <p>Lorem, ipsum dolor.</p>
+    </ChildComponent>
+
+    <ChildComponent></ChildComponent>
   </div>
 </template>
 
@@ -20,13 +30,12 @@
   import HeaderComponent from './components/HeaderComponent.vue';
   import ChildComponent from './components/ChildComponent.vue';
 
-  const displayName = ref('');
 
-  const setName =  (event) => {
-    // al ejecutarse la fucnion, displayName será igual a la información del evento 
-    displayName.value = event
-  }
 </script>
 <style scoped> 
- 
+ .father{
+  align-items: center;
+  text-align: center;
+ }
+
 </style>

@@ -2,10 +2,10 @@
     <div class="child">
         <h2>Este es el componente hijo</h2>
 
-        <p>Nombre de usuario: {{ userName }}</p>
-
-        <button @click="login_inicio">Login</button>
-
+        <!-- slot ayuda a pegar todo un bloque de codigo html desde el componente padre  -->
+        <slot>
+            <h4>Contenido por defecto por si el componente padre no envia nada</h4>
+        </slot>
     </div>
 
 </template>
@@ -13,16 +13,6 @@
 <script setup>
 import { ref } from 'vue';
 
-    // constante donde se crearán los eventos
-    const emit = defineEmits(['login','nombre_de_otro_evento'])
-
-  const userName = ref('Arely');
-
-  // variable que emitirá un evento con cierta información
-  const login_inicio = () => {
-    // primer argumento: nombre del evento, segundo argumento: la información que queremos que viaje
-    emit('login', userName.value)
-  }
 
 </script>
 
@@ -31,6 +21,8 @@ import { ref } from 'vue';
         border: 5px solid black;
         text-align: center;
         align-items: center;
+        margin: 10px;
+        padding: 10px;
     }
 
 </style>
