@@ -6,15 +6,13 @@
   <div>
     <!-- AGregar el componente del header con el titulo y lo importamos  -->
     <HeaderComponent></HeaderComponent>
-    <h1>Directiva V-If</h1>
+    <h1>Renderizado de listas | v-for</h1>
+    <div>
+      <!-- crear un p por cada elemento que haya en la lista, para no hacerlos de uno por uno. Se usará un For -->
+       <!-- se le tiene que asignar una variable que almacenará el valor (movie), decir de dónde sacará la información (lista movies) y crear una llave unica (movie) -->
+      <p v-for="movie in movies" :key="movie">{{ movie }}</p>
+    </div>
 
-    <!-- V-If hará que solo se muestre si la funcion se cumple. Se puede usar con booleanos o con cadenas o numeros (si está vacía es false) -->
-    <h2 v-if="condition">La condición se cumple</h2>
-
-    <h2 v-else-if="condition2">Condición 2</h2>
-
-    <!-- se cumple si las de arriba no se cumplen  -->
-    <h2 v-else>NO se cumplen las condiciones</h2>
 
   </div>
 </template>
@@ -23,10 +21,7 @@
   import { ref } from 'vue';
   import HeaderComponent from './components/HeaderComponent.vue';
 
-  const condition = false;
-  const condition2 = false;
-
-
+  const movies = ['El libro de la vida','Naruto the last','superman','harry potter']
 </script>
 <!-- scoped ayuda a que los estilos generados solo se apliquen al componente  -->
 <style scoped> 
