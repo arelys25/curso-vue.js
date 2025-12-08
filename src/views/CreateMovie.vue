@@ -19,6 +19,10 @@
 <script setup>
 import { reactive } from "vue";
 import HeaderComponent from "../components/HeaderComponent.vue";
+import { useMovieStore } from "../stores/MovieStore";
+
+// usar la variable de la store que contiene todas las variables
+const movieStore = useMovieStore();
 
 const movie = reactive({
   title: "",
@@ -32,7 +36,8 @@ const handleSubmit = () => {
     return;
   }
   
-  console.log(movie);
+  // hacer que el formulario use la funcion de añadir pelicula 
+  movieStore.addMovie(movie);
 };
 </script>
 
