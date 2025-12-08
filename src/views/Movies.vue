@@ -1,4 +1,5 @@
 <template>
+    <HeaderComponent/>
     <div>
       <h1>Movies</h1>
       <ul>
@@ -14,6 +15,7 @@
 
 <script setup>
 import { ref } from "vue";
+import HeaderComponent from "../components/HeaderComponent.vue";
 
 const movies = ref([
   { title: "Inception", duration: "148 min", director: "Christopher Nolan" },
