@@ -9,59 +9,65 @@
 
    <div class="father">
 
-     <h1>WatchEffect | Vigilancia de cambios</h1>
-   
-     <h2>Hola {{ userName2.name }}</h2>
+     <h1>Forms</h1>
 
-     <button @click="setName2">Cambiar de usuario</button>
+     <!-- submit es el evento de enviar el formulario. Cuando se envie el formulario se mandará a llamar la función handleSubmit -->
+      <!-- .prevent sirve para prevenir el comportamiento por defecto de enviar (que se recargue y borre todo el formulario al enviar) -->
+     <form class="form" @submit.prevent="handleSubmit">
+      <label for="title">Title: </label>
+      <input v-model="movie.title" type="text" id="title">
+      
+      <label for="duration">Duration: </label>
+      <input v-model="movie.duration" type="number" id="duration">
+
+      <label for="director">Director: </label>
+      <input v-model="movie.director" type="text" id="director">
+
+      <button>Enviar</button>
+
+     </form>
 
    </div>
   </div>
 </template>
 
 <script setup>
-  import { computed, ref, watch, watchEffect } from 'vue';
-  import HeaderComponent from './components/HeaderComponent.vue';
-  import ChildComponent from './components/ChildComponent.vue';
+  import { reactive } from 'vue';
+import HeaderComponent from './components/HeaderComponent.vue';
 
-  const userName = ref({name:'Arely'})
-
-  const userName2 = ref({name:'Dania'})
-
-  const setName = () => {
-    userName.value.name = 'Alexis'
-  };
-
-  const setName2 = () => {
-    userName2.value.name = 'Ashly'
-  };
-
-  // watch nos avisa o vigila una variable que nosotros querramos
-  // el primer parametro es la variable a vigilar (useName)
-  // el segundo parámetro será un callback, la función que querramos ejecutar cuando cambie la variable 
-  // si queremos hacer que el watch no espere a que se cambie, es decir, que se ejecute desde el primer momento, agregaremos un tercer argumento
-  // el tercer argumento será un objeto que tiene opciones
-  watch(userName,(newValue, oldValue) => {
-    // acceder a valores nuevos y antiguos 
-    console.log('User Name modified', newValue,oldValue)
-  }, {
-    // inmediate hace que se ejecute inmediatamente
-    inmediate: true,
-    deep:true // se usa para especificar que queremos tambien vigilar los comportamientos internos de un objeto
+  // rective es lo mismo que rev solo que reactive se usa para objetos
+  const movie = reactive({
+    title:'',
+    duration: 0,
+    director:''
   });
 
-  // en el watch effect no se necesita poner como argumento la variable a vigilar, ya con el simple hecho de mencionarla en la funcion es suficiente
-  watchEffect(
-    () => {
-      console.log('User Name modified to: ',userName2.value.name);
+  const handleSubmit = () => {
+    // hacer validaciones || = or, ! = si no existe...
+    if (!movie.title || !movie.duration || !movie.director){
+      alert('Rellena todos los campos por favor');
+      return; // que se salga de la funcion si no se llena el formulario correctamente
     }
-  );
+    console.log(movie)
+  }
 
 </script>
+
 <style scoped> 
- .father{
-  align-items: center;
+ .father {
   text-align: center;
+  /* align-items aquí no funciona si no es display: flex, puedes quitarlo */
+ }
+
+ .form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+  
+  width: 100%;           /* Ocupa el espacio disponible... */
+  max-width: 400px;      /* ...pero detente al llegar a 400px */
+  margin: 0 auto;        /* Centra el formulario horizontalmente */
+  padding: 20px;         /* Un poco de espacio interno opcional */
  }
 
 </style>
