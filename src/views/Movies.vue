@@ -22,11 +22,22 @@
 
 
 <script setup>
+import { onMounted, onUnmounted } from "vue";
 import HeaderComponent from "../components/HeaderComponent.vue";
 import { useMovieStore } from "../stores/MovieStore";
 
 // usar la variable de la store que contiene todas las variables
 const movieStore = useMovieStore();
+
+// función que contendrá todo lo que nosotros querramos que se haga cuando se monte el componente (cada que se monte)
+onMounted(() => {
+  console.log('Movie Component Mounted')
+});
+
+// funcion que se ejecutará cuando el componente se desmonte 
+onUnmounted(() => {
+  console.log('Movie Component Unmounted')
+});
 
 
 </script>

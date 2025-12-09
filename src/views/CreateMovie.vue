@@ -17,7 +17,7 @@
 
 
 <script setup>
-import { reactive } from "vue";
+import { onUpdated, reactive } from "vue";
 import HeaderComponent from "../components/HeaderComponent.vue";
 import { useMovieStore } from "../stores/MovieStore";
 import router from "../router";
@@ -50,6 +50,11 @@ const handleSubmit = () => {
   // hacer que, cuando se envie el formulario se vaya a la pagine de movies
   router.push({name: 'movies'});
 };
+
+// funcion que se ejecutará cuando se actualice el componente
+onUpdated(() => {
+  console.log('Create Movie Component Updated')
+})
 </script>
 
 
