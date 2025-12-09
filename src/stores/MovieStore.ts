@@ -18,10 +18,17 @@ export const useMovieStore = defineStore('movie', ()  => {
     // funcion para agregar peliculas 
     const addMovie = (movie: any) => movies.value.push(movie);
 
+    const getMovie = (movieTitle: any) => {
+
+        // devolver el resultado del metodo find: recorre too el array de peliculas y compruebe que los titulos son iguales.
+        return movies.value.find((movie) => movie.title === movieTitle)
+    }
+
     // lo que querramos regresar
     return {
         movies,
-        addMovie
+        addMovie,
+        getMovie
     }
 }, 
 {

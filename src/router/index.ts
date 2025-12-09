@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Movies from "../views/Movies.vue";
 import CreateMovie from "../views/CreateMovie.vue";
+import MovieDetails from "../views/MovieDetails.vue";
 
 // necesario para hacer las rutas
 // necesita un objeto de propiedades (history y routes)
@@ -18,6 +19,11 @@ const router = createRouter({
             path: '/movies', // ruta como tal 
             name: 'movies', // nombre de la ruta
             component: Movies // componente que queremos que se renderice
+        },
+        {   // ruta con parámetros
+            path: '/movies/:movieTitle', // se usan los : porque será una variable
+            name: 'movieDetails', // nombre de la ruta
+            component: MovieDetails // componente que queremos que se renderice
         },
         {
             path: '/create', // ruta como tal 
