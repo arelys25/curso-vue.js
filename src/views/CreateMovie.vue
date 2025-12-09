@@ -37,7 +37,9 @@ const handleSubmit = () => {
   }
   
   // hacer que el formulario use la funcion de añadir pelicula 
-  movieStore.addMovie(movie);
+  // {...} sirve para enviar una copia de la variable ya que, al momento de querer crear una nueva pelicula, solo se modifica la variable 
+  // porque es dinámica. Para evitar eso, crearemos copias de las variables
+  movieStore.addMovie({...movie});
 };
 </script>
 

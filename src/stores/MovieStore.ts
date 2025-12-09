@@ -23,4 +23,9 @@ export const useMovieStore = defineStore('movie', ()  => {
         movies,
         addMovie
     }
-})
+}, 
+{
+    // utilizar el piniaPluginPersistedstate
+    // esto hará que toda la infomación se guarde en local 
+    persist: true
+});
