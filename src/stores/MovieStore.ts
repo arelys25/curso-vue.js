@@ -6,13 +6,13 @@ import { ref } from "vue";
 export const useMovieStore = defineStore('movie', ()  => {
     // aqui se colocarán todas las variables con relación a movie que querremos que sean importadas a toda la aplicacion 
     const movies = ref([
-        { title: "Inception", duration: "148 min", director: "Christopher Nolan" },
+        { title: "Inception", duration: 148, director: "Christopher Nolan" },
         {
             title: "The Lord of the Rings",
-            duration: "201 min",
+            duration: 201,
             director: "Peter Jackson",
         },
-        { title: "Interstellar", duration: "169 min", director: "Christopher Nolan" },
+        { title: "Interstellar", duration: 169, director: "Christopher Nolan" },
     ]);
 
     // funcion para agregar peliculas 

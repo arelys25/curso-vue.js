@@ -20,6 +20,7 @@
 import { reactive } from "vue";
 import HeaderComponent from "../components/HeaderComponent.vue";
 import { useMovieStore } from "../stores/MovieStore";
+import router from "../router";
 
 // usar la variable de la store que contiene todas las variables
 const movieStore = useMovieStore();
@@ -40,6 +41,14 @@ const handleSubmit = () => {
   // {...} sirve para enviar una copia de la variable ya que, al momento de querer crear una nueva pelicula, solo se modifica la variable 
   // porque es dinámica. Para evitar eso, crearemos copias de las variables
   movieStore.addMovie({...movie});
+
+  // vaciar el formulario 
+  movie.title = '';
+  movie.director = '';
+  movie.duration = 0;
+
+  // hacer que, cuando se envie el formulario se vaya a la pagine de movies
+  router.push({name: 'movies'});
 };
 </script>
 

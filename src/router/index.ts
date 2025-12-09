@@ -16,7 +16,7 @@ const router = createRouter({
         },
         {
             path: '/movies', // ruta como tal 
-            name: 'Movies', // nombre de la ruta
+            name: 'movies', // nombre de la ruta
             component: Movies // componente que queremos que se renderice
         },
         {
