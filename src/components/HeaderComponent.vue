@@ -2,6 +2,13 @@
     <div>
         <header class="header">
             <h1>Movies</h1>
+
+            <div class="login-bar">
+                <!-- agregar nombre de usuario solo al presionar el boton de login y si existe conexion con la API -->
+                <p v-if="userStore.user" class="username">Hola, {{ userStore.user.name }}</p>
+
+                <button @click="userStore.getUser()">Login</button>
+            </div>
             <nav>
                 <ul class="nav-list">
                     <li>
@@ -26,26 +33,46 @@
 </template>
 
 <script setup>
+import { useUserStore } from '../stores/userStore';
+
+
+    const userStore = useUserStore();
+
+
 
 </script>
 
 <style scoped>
 
-.header {
-  background-color: #000022;
-  color: white;
-  text-align: center;
-  padding: 20px;
+    .header {
+        background-color: #000022;
+        color: white;
+        text-align: center;
+        padding: 20px;
 
-.nav-list {
-    display: flex;
-    justify-content: space-around;
+        .login-bar {
+            width: 100%;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: end;
 
-.link {
-      color: white;
-      text-decoration: none;
+            .username {
+            margin: 0;
+            padding-right: 10px;
+            }
+        }
+
+        .nav-list {
+            display: flex;
+            justify-content: space-around;
+
+            .link {
+                color: white;
+                text-decoration: none;
+            }
+        }
     }
-  }
-}
 
 </style>
