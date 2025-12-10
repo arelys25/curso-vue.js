@@ -3,14 +3,21 @@
 
 <template>
     <div>
-        <!-- <HeaderComponent></HeaderComponent> -->
+        <HeaderComponent></HeaderComponent>
         <h2>Welcome to the Home Page</h2>
+
+        <h3 id="counter">Counter: {{ counter }} 
+            <button @click="counter++" id="counter_btn">+</button>
+        </h3>
 
     </div>
 </template>
 
 <script setup>
-    import HeaderComponent from '../components/HeaderComponent.vue';
+    import { ref } from 'vue';
+import HeaderComponent from '../components/HeaderComponent.vue';
+
+    const counter = ref(1);
 
 </script>
 
